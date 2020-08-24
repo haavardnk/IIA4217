@@ -21,7 +21,7 @@ plugins:             [jekyll-paginate, jekyll-sitemap, jekyll-feed, jekyll-seo-t
 
 # Customise atom feed settings (this is where Jekyll-Feed gets configuration information)
 title:		           'Systems and Control Laboratory'
-description:	       'IIA4217'
+description:	       'IIA4217 2020'
 author:              'Håvard Kråkenes'
 
 # RSS 2.0 can be used instead of Atom by uncommenting following two lines
