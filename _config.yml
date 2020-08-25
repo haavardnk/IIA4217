@@ -1,29 +1,55 @@
-# Site Build Settings
+# Site settings
+title: IIA4217 - 220888
+email: 220888@usn.no
+url: https://haavardnk.github.io/IIA4217/
+description: "Student project for the course Systems and Control Laboratory, IIA4217 for Håvard Kråkenes"
+keywords: "IIA4217, USN"
+meta_author: Kråkenes Håvard
 
-# Jekyll-paginate-v2 configuration
-#  pagination:
-#   enabled: true
-#   per_page: 5
-#   permalink: '/page/:num/'
-#   title: ':title - page :num of :max'
-#   limit: 0
-#   sort_field: 'date'
-#   sort_reverse: true
+# Contact form:
+# - static : pass through formspree.io to validate email sending
+# - disqus : replace contact form by disqus thread
+# - comment the line below if you want to stick with the default PHP contact form
+contact: static
 
-# jekyll-paginate configuration
-paginate:            5
+# If you use disqus you need disqus shortname
+# https://help.disqus.com/customer/portal/articles/466208
+disqus_shortname: myshortname
+
+# Color settings (hex-codes without the leading hash-tag)
+color:
+  primary: 18bc9c #80B3FF
+  primary-rgb: "24,288,156" #"128,179,255"
+  secondary: 2c3e50 #FD6E8A
+  secondary-dark: 233140 #A2122F
+
+# Footer settings
+footer:
+  copyright: Håvard Kråkenes
+  location: Location
+  social: Around the Web
+  credits: Credits
+
+# Social networks usernames (many more available: google-plus, flickr, dribbble, pinterest, instagram, tumblr, linkedin, etc.)
+social:
+
+
+# Postal address (add as many lines as necessary)
+address:
+
+
+# Credits content
+credits: 'Freelancer is a free to use, open source Bootstrap theme created by <a href="http://startbootstrap.com">Start Bootstrap</a>.'
 
 # Build settings
-markdown:            kramdown
-highlighter:         rouge
-permalink:           none
-plugins:             [jekyll-paginate, jekyll-sitemap, jekyll-feed, jekyll-seo-tag]
+markdown: kramdown
+highlighter: rouge
+permalink: pretty
 
-# Customise atom feed settings (this is where Jekyll-Feed gets configuration information)
-title:		           'Systems and Control Laboratory'
-description:	       'IIA4217 2020'
-author:              'Håvard Kråkenes'
-
-# RSS 2.0 can be used instead of Atom by uncommenting following two lines
-#feed:
-#  path: rss-feed.xml
+#for posts
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      permalink: ""
