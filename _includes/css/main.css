@@ -432,13 +432,17 @@ footer .footer-below {
     box-shadow: none;
 }
 
-.portfolio-modal .modal-content h2 {
+/* .portfolio-modal .modal-content h2 {
     margin: 0;
     font-size: 3em;
-}
+} */
 
 .portfolio-modal .modal-content img {
     margin-bottom: 30px;
+}
+
+.portfolio-modal .modal-content em {
+    font-size: 15px;
 }
 
 .portfolio-modal .modal-content .item-details {
