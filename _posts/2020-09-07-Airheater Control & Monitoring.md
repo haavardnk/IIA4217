@@ -142,83 +142,7 @@ In *Figure 10* the OPC-UA and SQL client gui and code can be seen. The applicati
 
 The Azure SQL server has two tables, one view and one stored procedure. The SQL query used to initialize the database can be seen below:
 
-```sql
-
-/************************************************************************************/
-/*Tables.sql*/
-/************************************************************************************/
-
-CREATE TABLE [MEASUREMENT]
-( 
-	[MeasurementId]      int  NOT NULL  IDENTITY ( 1,1 ) Primary Key,
-	[MeasurementName]    varchar(50)  NOT NULL UNIQUE 
-
-)
-go
-
-CREATE TABLE [MEASUREMENTDATA]
-( 
-	[MeasurementDataId]  int  NOT NULL  IDENTITY ( 1,1 ) Primary Key,
-	[MeasurementId]      int  NOT NULL Foreign Key REFERENCES MEASUREMENT(MeasurementId),
-	[MeasurementTimeStamp] datetime  NOT NULL ,
-	[MeasurementValue]   float  NOT NULL, 
-	[MeasurementUnit]	 varchar(50)  NOT NULL
-)
-go
-
-	
-/************************************************************************************/
-/*GetMeasurementData.sql*/
-/************************************************************************************/
-IF EXISTS (SELECT name 
-	   FROM   sysobjects 
-	   WHERE  name = 'GetMeasurementData' 
-	   AND 	  type = 'V')
-	DROP VIEW GetMeasurementData
-GO
-
-CREATE VIEW GetMeasurementData
-AS
-
-SELECT   TOP (1000) MEASUREMENTDATA.MeasurementDataId, MEASUREMENT.MeasurementName, FORMAT(MEASUREMENTDATA.MeasurementTimeStamp, 'MM.dd HH:mm:ss') 
-                         AS MeasurementTimeStamp, MEASUREMENTDATA.MeasurementValue, MEASUREMENTDATA.MeasurementUnit
-FROM         dbo.MEASUREMENTDATA INNER JOIN
-                         dbo.MEASUREMENT ON MEASUREMENTDATA.MeasurementId = MEASUREMENT.MeasurementId
-ORDER BY dbo.MEASUREMENTDATA.MeasurementDataId DESC
-
-GO
-
-	
-/************************************************************************************/
-/*SaveMeasurementData.sql*/
-/************************************************************************************/
-IF EXISTS (SELECT name 
-   FROM   sysobjects 
-   WHERE  name = 'SaveMeasurementData' 
-   AND   type = 'P')
-DROP PROCEDURE SaveMeasurementData
-GO
-
-CREATE PROCEDURE AddMeasurement
-@MeasurementName varchar(50),
-@MeasurementValue float,
-@MeasurementUnit varchar(50)
-AS
-
-DECLARE
-@MeasurementId int
-
-if not exists (select * from MEASUREMENT where MeasurementName = @MeasurementName)
-	insert into MEASUREMENT (MeasurementName) values (@MeasurementName)
-else
-	select @MeasurementId = MeasurementId from MEASUREMENT where MeasurementName = @MeasurementName
-
-
-insert into MEASUREMENTDATA (MeasurementId, MeasurementValue, MeasurementUnit, MeasurementTimeStamp) values (@MeasurementId, @MeasurementValue, @MeasurementUnit, getdate())
-
-GO
-
-```
+The full code for initializing the database can be seen here: [SQL Code](https://github.com/haavardnk/IIA4217/blob/gh-pages/files/projects/scada/Database.sql)
 
 ## ASP.NET
 
@@ -232,3 +156,5 @@ A screenshot of the web application can be seen in *Figure 11*. It receives the 
 ## Conclusion
 
 There are many applications, interfaces and technologies at work in this setup. They all speak with each other and fulfill its own task as a standalone application and talking with the other via known industry protocols. The usage of a cloud infrastructure such as Azure shows how easy it is to move applications from large local servers to the cloud, this also means that the applications can be scaled up almost infinitely. Industry 4.0 is definately the way to go for easy 24/7 online monitoring.
+
+All the files for this project can be seen here: [Project files](https://github.com/haavardnk/IIA4217/tree/gh-pages/files/projects/scada)
