@@ -89,6 +89,8 @@ Thingspeak communication is implemented in the Labview application. This is done
 
 In thingspeak the values of $y$, $u$, $r$, $Kp$ and $Ti$ is implemented and sent from Labview. The values are sent to thingspeak using MQTT where it publishes all 5 values at once. There is a limit to thingspeak free plan that only supports updating the value every 15 seconds, so the data is of low resolution.
 
+MQTT was chosen instead of HTTP because HTTP was not reliable. First off the response time was too big and second it was not able to send five requests at once. MQTT solved both of these by being responsive, fast and sending all values at once.
+
 All in all it works great. Using a premium plan would enable high frequency MQTT publishing which would help a lot. Getting data from Thingspeak is also easy to implement using a MQTT subscribe block.
 
 A screenshot of the Thingspeak GUI can be seen in *Figure 6*
