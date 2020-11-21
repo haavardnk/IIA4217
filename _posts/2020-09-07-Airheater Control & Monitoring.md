@@ -83,6 +83,8 @@ The Gain Margin (GM) and Phase Margin (PM) are both within the "Golden Rules", t
 [![Bode2](img/projects/scada/Bode2.png){:class="img-responsive img-centered"}](https://raw.githubusercontent.com/haavardnk/IIA4217/gh-pages/img/projects/scada/Bode2.png){:target="_blank"}
 *Figure 5: Bode diagram of complete system, GM and PM within OK limits*
 
+The code for the bode plot can be seen below.
+
 ```matlab
 % Define Constants
 t=22;
@@ -106,9 +108,9 @@ margin(L);
 grid on
 ```
 
-## Labview
+## LabVIEW
 
-There is a total of three labview programs used for this report. The main controller application which controls the air heater and sends log data to an OPC-UA server, the OPC-UA server and the OPC-UA client which reads from OPC-UA and transmits the data to an Azure SQL server.
+There is a total of three LabVIEW programs used for this report. The main controller application which controls the air heater and sends log data to an OPC-UA server, the OPC-UA server and the OPC-UA client which reads from OPC-UA and transmits the data to an Azure SQL server.
 
 [![Labview-gui](img/projects/scada/view1gui.PNG){:class="img-responsive img-centered"}](https://raw.githubusercontent.com/haavardnk/IIA4217/gh-pages/img/projects/scada/view1gui.PNG){:target="_blank"}
 *Figure 6: GUI of controller application*
@@ -118,7 +120,7 @@ An overview of the GUI of the controller application can be seen in *Figure 6. T
 [![Labview-code](img/projects/scada/view1code.PNG){:class="img-responsive img-centered"}](https://raw.githubusercontent.com/haavardnk/IIA4217/gh-pages/img/projects/scada/view1code.PNG){:target="_blank"}
 *Figure 7: Code of controller application*
 
-The inner workings of the labview application can be seen in *Figure 7* including the PI controller, the blackbox model, "simulator" of black box model and OPC-UA connection.
+The inner workings of the LabVIEW application can be seen in *Figure 7* including the PI controller, the blackbox model, "simulator" of black box model and OPC-UA connection.
 
 The C code for the controller can be seen below.
 
@@ -146,7 +148,7 @@ In *Figure 8* the OPC-UA server gui and code can be seen. This is just a OPC-UA 
 ![opc-server](img/projects/scada/view2.PNG){:class="img-responsive img-centered"}
 *Figure 8: OPC-UA Server*
 
-In *Figure 9 the OPC-UA and SQL client gui and code can be seen. The application reads the latest value from the local OPC-UA server and transmits it to the cloud based Azure SQL server.
+In *Figure 9* the OPC-UA and SQL client gui and code can be seen. The application reads the latest value from the local OPC-UA server and transmits it to the cloud based Azure SQL server.
 
 ![opc-sql](img/projects/scada/view3.PNG){:class="img-responsive img-centered"}
 *Figure 9: OPC-UA and SQL client*
